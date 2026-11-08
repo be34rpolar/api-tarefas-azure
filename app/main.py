@@ -16,7 +16,7 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(
     title="API de Tarefas",
-    description="API básica com SQLite hospedada em uma VM no Azure.",
+    description="API básica com SQLite hospedada no Azure App Service.",
     version="1.0.0",
     lifespan=lifespan,
 )

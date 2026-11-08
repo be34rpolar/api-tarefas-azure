@@ -1,6 +1,6 @@
 flowchart LR
-    A["1. Código no<br/>GitHub"] --> B["2. Criar VM<br/>no portal Azure"]
-    B --> C["3. Liberar porta 80<br/>no NSG"]
-    C --> D["4. Acessar via SSH<br/>e clonar o repo"]
-    D --> E["5. Rodar<br/>setup.sh"]
-    E --> F["6. Testar em<br/>http://IP/docs"]
+    A["1. Código no<br/>GitHub"] --> B["2. Cloud Shell:<br/>criar Resource Group"]
+    B --> C["3. git clone<br/>do repositório"]
+    C --> D["4. az webapp up<br/>plano F1 + build"]
+    D --> E["5. Startup command<br/>e DB_PATH"]
+    E --> F["6. Testar em<br/>/docs"]

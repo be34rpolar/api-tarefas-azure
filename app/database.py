@@ -2,7 +2,8 @@
 import os
 import sqlite3
 
-# Caminho do arquivo do banco. Na VM fica em /var/lib/api-tarefas/tarefas.db
+# Caminho do arquivo do banco. No Azure App Service fica em /home/tarefas.db
+# (pasta /home é o armazenamento persistente do App Service)
 DB_PATH = os.getenv("DB_PATH", "tarefas.db")
 
 
