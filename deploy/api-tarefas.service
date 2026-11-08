@@ -1,0 +1,14 @@
+[Unit]
+Description=API de Tarefas (FastAPI + SQLite)
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/opt/api-tarefas
+Environment=DB_PATH=/var/lib/api-tarefas/tarefas.db
+ExecStart=/opt/api-tarefas/venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

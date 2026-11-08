@@ -1,0 +1,14 @@
+flowchart LR
+    U["Usuário<br/>navegador / Postman"] -->|"HTTP :80"| IP["IP Público<br/>(Standard, estático)"]
+
+    subgraph AZ["Azure · Resource Group rg-api-tarefas · Região Brazil South"]
+        IP --> NSG["NSG<br/>libera 22 (SSH) e 80 (HTTP)"]
+        NSG --> NIC["Interface de rede<br/>VNet 10.0.0.0/16"]
+        subgraph VM["VM Ubuntu 24.04 · SKU Standard_B1s"]
+            NG["Nginx :80<br/>proxy reverso"] --> UV["Uvicorn :8000<br/>FastAPI (Python)"]
+            UV --> DB[("SQLite tarefas.db<br/>no disco SSD Premium")]
+        end
+        NIC --> NG
+    end
+
+    GH["GitHub<br/>código-fonte"] -.->|"git clone"| UV
